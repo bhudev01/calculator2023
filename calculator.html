@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator app</title>
+    <style>
+        body{
+            background-color: rgb(27, 6, 54);
+        }
+        h2 {
+            margin-left:465px;
+            color: aqua;
+        }
+
+        input {
+            margin-left:469px;
+            width: 289px;
+            height: 36px;
+            font-size: 22px;
+            border-radius: 20px;
+        }
+
+        .container {
+            margin: 5px;
+            padding: 10px;
+            margin-left: 459px;
+            
+        }
+
+        .button {
+            width: 66px;
+            height: 50px;
+            margin: 3px;
+            border:1px solid #e94e12;
+            font-size: 20px;
+            border-radius: 39px;
+            background-color: aquamarine;
+        }
+        .equal{
+            background-color: yellow;
+        }
+       .next{
+            background-color:#857e7e;
+        }
+        .another{
+            background-color: #171818;
+            color: white;
+        }
+    </style>
+
+</head>
+
+<body>
+    <h2>Welcome to Calculator 2023</h2>
+    <input type='text' id="txt"> <br>
+    <div class="container">
+        <div class="row">
+            <button class="button , next">8</button>
+            <button class="button , next">7</button>
+            <button class="button , next">9</button>
+            <button class="button , another">x</button>
+        </div>
+        <div class="row">
+            <button class="button , next">4</button>
+            <button class="button , next">5</button>
+            <button class="button , next">6</button>
+            <button class="button , another">/</button>
+        </div>
+        <div class="row">
+            <button class="button , next">1</button>
+            <button class="button , next">2</button>
+            <button class="button , next">3</button>
+            <button class="button , another">+</button>
+        </div>
+        <div class="row">
+            <button class="button , next">0</button>
+            <button class="button , equal">=</button>
+            <button class="button">C</button>
+            <button class="button , another">-</button>
+        </div>
+        <div class="row">
+            <button class="button">M+</button>
+            <button class="button">M-</button>
+            <button class="button">CE</button>
+            <button class="button , another">%</button>
+        </div>
+    </div>
+
+    <script>
+        let txt = document.getElementById('txt');
+        let buttons = document.querySelectorAll('button');
+        let txtvalue = '';
+
+        for (button of buttons) {
+            button.addEventListener('click', (e) => {
+                buttonText = e.target.innerText;
+
+                if (buttonText == 'x') {
+                    buttonText = '*';
+                    txtvalue += buttonText
+                    txt.value = txtvalue;
+                }
+                else if (buttonText == "C") {
+                    txtvalue = '';
+                    txt.value = txtvalue;
+                }
+                else if (buttonText == "=") {
+                    txt.value = eval(txtvalue);
+                }
+                else if (buttonText == "CE") {
+                    txtvalue = txtvalue.substring(0, txtvalue.length - 1);
+                    txt.value = txtvalue
+                }
+                else {
+                    txtvalue += buttonText
+                    txt.value = txtvalue;
+                }
+            })
+        }
+
+    </script>
+</body>
+
+</html>
